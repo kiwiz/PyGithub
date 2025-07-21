@@ -3594,12 +3594,8 @@ class Repository(CompletableGithubObject):
             path = f"{self.url}/releases/tags/{id}"
             if id == "latest":
                 path = f"{self.url}/releases/latest"
-            headers, data = self._requester.requestJsonAndCheck(
-                "GET", path
-            )
-            return github.GitRelease.GitRelease(
-                self._requester, headers, data, completed=True
-            )
+            headers, data = self._requester.requestJsonAndCheck("GET", path)
+            return github.GitRelease.GitRelease(self._requester, headers, data, completed=True)
 
     def get_latest_release(self) -> GitRelease:
         """
